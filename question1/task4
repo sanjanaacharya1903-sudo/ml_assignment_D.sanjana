@@ -1,1 +1,11 @@
+from sklearn.metrics import confusion_matrix, classification_report
 
+models = [dt_model, rf_model, gb_model]
+names = ["DT", "RF", "GB"]
+
+for i in range(len(models)):
+    print("\nModel:", names[i])
+    pred = models[i].predict(X_test)
+    
+    print(confusion_matrix(y_test, pred))
+    print(classification_report(y_test, pred))
