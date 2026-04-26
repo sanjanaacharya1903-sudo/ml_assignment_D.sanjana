@@ -1,0 +1,11 @@
+# sort by date
+data = data.sort_values("transaction_date")
+
+# split 80-20 (time based)
+split_index = int(len(data) * 0.8)
+
+train = data.iloc[:split_index]
+test = data.iloc[split_index:]
+
+print("Train size:", train.shape)
+print("Test size:", test.shape)
