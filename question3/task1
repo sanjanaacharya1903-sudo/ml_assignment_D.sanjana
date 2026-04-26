@@ -1,0 +1,20 @@
+import pandas as pd
+import os
+
+print(os.getcwd())
+print(os.listdir())
+
+data = pd.read_csv("q3_retail_promotions.csv")
+
+# convert to datetime
+data["transaction_date"] = pd.to_datetime(data["transaction_date"])
+
+# extract features
+data["year"] = data["transaction_date"].dt.year
+data["month"] = data["transaction_date"].dt.month
+data["day_of_week"] = data["transaction_date"].dt.dayofweek
+
+# month end flag
+data["is_month_end"] = data["transaction_date"].dt.day.apply(lambda x: 1 if x >= 25 else 0)
+
+data.head()
