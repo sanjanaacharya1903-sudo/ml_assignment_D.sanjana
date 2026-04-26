@@ -1,0 +1,16 @@
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+     # targat distributon
+sns.countplot(x=data["heart_disease"])
+plt.title("heart disease count")
+plt.show()
+
+           # correlatioN
+plt.figure(figsize=(8,5))
+sns.heatmap(data.corr(), annot=True)
+plt.show()
+
+          # age VS target
+sns.boxplot(x=data["heart_disease"], y=data["age"])
+plt.show()
