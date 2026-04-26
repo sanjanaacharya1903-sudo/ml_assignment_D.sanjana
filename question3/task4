@@ -1,0 +1,23 @@
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
+from sklearn.pipeline import Pipeline
+
+# target
+y_train = train["items_sold"]
+y_test = test["items_sold"]
+
+# drop unused columns
+X_train = train.drop(["items_sold", "transaction_date"], axis=1)
+X_test = test.drop(["items_sold", "transaction_date"], axis=1)
+
+# categorical & numerical columns
+cat_cols = ["promotion_type", "location_type", "store_size"]
+num_cols = [col for col in X_train.columns if col not in cat_cols]
+
+# transformer
+preprocessor = ColumnTransformer(
+    transformers=[
+        ("cat", OneHotEncoder(handle_unknown='ignore'), cat_cols),
+        ("num", StandardScaler(), num_cols)
+    ]
+)
