@@ -1,0 +1,12 @@
+import pandas as pd
+import os
+
+# check location
+print(os.getcwd())
+print(os.listdir())
+
+# loaddataseT
+data = pd.read_csv("q2_customers.csv")
+
+print(data.head())
+print(data.info())
