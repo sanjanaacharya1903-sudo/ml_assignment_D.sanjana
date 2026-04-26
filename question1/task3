@@ -1,0 +1,10 @@
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+
+dt_model = DecisionTreeClassifier(random_state=42)
+rf_model = RandomForestClassifier(random_state=42)
+gb_model = GradientBoostingClassifier(random_state=42)
+
+dt_model.fit(X_train, y_train)
+rf_model.fit(X_train, y_train)
+gb_model.fit(X_train, y_train)
